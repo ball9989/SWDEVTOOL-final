@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  backend:
+    image: kritsakorn/devtool-backend:1.0.0
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 3013:3013
+    volumes:
+      - ./backend:/usr/app/backend
+    environment: 
+      - PORT=3013
+      - MONGODB_URI=mongodb+srv://it62070006:ball9988@cluster0.myhzw.mongodb.net/devFinal?retryWrites=true&w=majority
+    command:
+      sh -c 'npm i && npm start'
+  frontend:
+    image: kritsakorn/devtool-frontend:1.0.0
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8013:8013
+    environment:
+      - PORT=8013
+      - NEXT_PUBLIC_SERVER_URL=http://localhost:3013

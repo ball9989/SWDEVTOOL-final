@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend
+    image: kritsakorn/devtool-frontend:1.0.0
+  backend:
+    build: ./backend
+    image: kritsakorn/devtool-backend:1.0.0
